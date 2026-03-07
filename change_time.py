@@ -19,6 +19,8 @@ class ChangeTime(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(480, 206)
+        MainWindow.setMinimumSize(QtCore.QSize(480, 206))
+        MainWindow.setMaximumSize(QtCore.QSize(480, 206))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)

@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1069</width>
+    <width>1068</width>
     <height>557</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1065</width>
+    <width>1068</width>
     <height>557</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>2121212</width>
+    <width>1068</width>
     <height>557</height>
    </size>
   </property>
@@ -271,17 +271,20 @@ border: 0px solid white;</string>
     <widget class="QPushButton" name="apkInstallButton">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>40</x>
        <y>350</y>
-       <width>121</width>
+       <width>81</width>
        <height>23</height>
       </rect>
      </property>
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::NoContextMenu</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
@@ -289,15 +292,20 @@ border: 0px solid white;</string>
      <property name="text">
       <string> Install .APK file</string>
      </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>../img/install.png</normaloff>../img/install.png</iconset>
-     </property>
      <property name="iconSize">
       <size>
        <width>25</width>
        <height>25</height>
       </size>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QProgressBar" name="progressBar">
@@ -337,9 +345,9 @@ border: 0px solid white;</string>
     <widget class="QPushButton" name="uninstallButton">
      <property name="geometry">
       <rect>
-       <x>4</x>
+       <x>41</x>
        <y>380</y>
-       <width>121</width>
+       <width>71</width>
        <height>23</height>
       </rect>
      </property>
@@ -355,23 +363,22 @@ border: 0px solid white;</string>
      <property name="text">
       <string> Uninstall app</string>
      </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>../img/uninstall.png</normaloff>../img/uninstall.png</iconset>
-     </property>
      <property name="iconSize">
       <size>
        <width>25</width>
        <height>25</height>
       </size>
      </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
     </widget>
     <widget class="QPushButton" name="updatesButton">
      <property name="geometry">
       <rect>
-       <x>0</x>
+       <x>15</x>
        <y>410</y>
-       <width>121</width>
+       <width>91</width>
        <height>31</height>
       </rect>
      </property>
@@ -385,11 +392,7 @@ border: 0px solid white;</string>
       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
      </property>
      <property name="text">
-      <string>Install XE24</string>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>../img/updates.png</normaloff>../img/updates.png</iconset>
+      <string>Erase</string>
      </property>
      <property name="iconSize">
       <size>
@@ -820,7 +823,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_33">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>30</x>
         <y>5</y>
         <width>51</width>
         <height>51</height>
@@ -844,7 +847,7 @@ border: 0px solid white;</string>
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>17</y>
+        <y>15</y>
         <width>201</width>
         <height>31</height>
        </rect>
@@ -876,6 +879,63 @@ border: 0px solid white;</string>
       <string>Install</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>350</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../img/install.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>380</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../img/uninstall.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>414</y>
+       <width>21</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>../img/updates.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="searchingFrame">
     <property name="geometry">
@@ -892,7 +952,7 @@ border: 0px solid white;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_35">
+    <widget class="QLabel" name="label_20">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -913,7 +973,7 @@ border: 0px solid white;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_36">
+    <widget class="QLabel" name="label_21">
      <property name="geometry">
       <rect>
        <x>520</x>
@@ -967,6 +1027,12 @@ color: rgb(0, 174, 255);</string>
       <height>521</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>2112121</width>
+      <height>2121212</height>
+     </size>
+    </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
     </property>
@@ -992,7 +1058,7 @@ border: 1px solid black;</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_37">
+     <widget class="QLabel" name="label_22">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1016,7 +1082,7 @@ border: 0px solid white;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QLabel" name="label_38">
+    <widget class="QLabel" name="label_23">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -1047,7 +1113,7 @@ border: 0px solid white;</string>
       <string>Exit fastboot</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_39">
+    <widget class="QLabel" name="label_24">
      <property name="geometry">
       <rect>
        <x>240</x>
@@ -1062,7 +1128,7 @@ border: 0px solid white;</string>
       </font>
      </property>
      <property name="text">
-      <string>Status</string>
+      <string>Installation</string>
      </property>
     </widget>
     <widget class="QPushButton" name="installXE24Button">
@@ -1075,7 +1141,7 @@ border: 0px solid white;</string>
       </rect>
      </property>
      <property name="text">
-      <string>Install XE24</string>
+      <string>Install</string>
      </property>
     </widget>
     <widget class="QLabel" name="statusText">
@@ -1096,7 +1162,7 @@ border: 0px solid white;</string>
       <string>Waiting ...</string>
      </property>
     </widget>
-    <widget class="QProgressBar" name="progressBar_3">
+    <widget class="QProgressBar" name="progressBar_2">
      <property name="geometry">
       <rect>
        <x>240</x>
@@ -1116,6 +1182,177 @@ border: 0px solid white;</string>
      </property>
      <property name="invertedAppearance">
       <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>90</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Install XE24</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_2">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>140</y>
+       <width>191</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Custom</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_25">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>50</y>
+       <width>421</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>What firmware do you want to install?</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="customRomFrame">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>160</y>
+       <width>421</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLineEdit" name="bootInput">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Select boot.img file ...</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="systemInput">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Select system.img file ...</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="recoveryInput">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>291</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Select recovery.img file (optional) ...</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectBootFile">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectSystemFile">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>40</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectRecoveryFile">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>70</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_3">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>116</y>
+       <width>191</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>AOSP 5.1.1</string>
      </property>
     </widget>
    </widget>

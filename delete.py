@@ -26,6 +26,8 @@ class Remove(object):
         font_families = QFontDatabase.applicationFontFamilies(font_id)
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(347, 521)
+        MainWindow.setMinimumSize(QtCore.QSize(347, 521))
+        MainWindow.setMaximumSize(QtCore.QSize(347, 521))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
