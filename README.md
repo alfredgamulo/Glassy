@@ -1,5 +1,9 @@
 # Glassy
 An All-in-One Utility for Google Glass
+
+<img src="pictures/screenshot1.PNG" width="500">
+<img src="pictures/screenshot2.PNG" width="500">
+
 # Features
 
 * Completely free and open-source
@@ -9,6 +13,7 @@ An All-in-One Utility for Google Glass
 * Rooting the installed system
 * Simple installation of .apk files on Google Glass, as well as easy removal
 * Various tweaks (like Launchy to run installed .apk files directly on the glasses)
+* Windows 8.1 support
 
 # How to install
 
@@ -16,4 +21,8 @@ Download ``Glassy.exe`` and run it (yes, it's 400 MB because I included the XE24
 
 # How to build
 
-Install all the libraries listed in the ``main.py`` file, then run the command specified in the ``build.txt`` file.
+Install these libraries:
+* ``PyQt5==5.15.5``
+* ``art``
+
+Run the command specified in the ``build.txt`` file.
