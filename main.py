@@ -11,9 +11,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtGui import QFontDatabase
+from PyQt5.QtCore import Qt
+
 from change_time import ChangeTime
 from programs import Programs
 from delete import Remove
+from firmwares import Firmwares
+
 from art import text2art
 from zipfile import ZipFile
 
@@ -31,7 +35,7 @@ ctypes.windll.shcore.SetProcessDpiAwareness(0)
 base_dir = os.path.dirname(__file__)
 
 print(text2art("Glassy"))
-print("Version: 1.0")
+print("==> Version: 1.1 <==")
 print("Developed by zeroxdev")
 
 
@@ -61,6 +65,16 @@ class Ui_MainWindow(object):
         self.pageTitle.setStyleSheet("color: rgb(255, 255, 255);")
         self.pageTitle.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing)
         self.pageTitle.setObjectName("pageTitle")
+        self.downloadsButton = QtWidgets.QPushButton(self.frame)
+        self.downloadsButton.setGeometry(QtCore.QRect(860, 36, 51, 31))
+        self.downloadsButton.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
+        self.downloadsButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/downloads.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.downloadsButton.setIcon(icon)
+        self.downloadsButton.setIconSize(QtCore.QSize(30, 30))
+        self.downloadsButton.setObjectName("downloadsButton")
+        self.downloadsButton.setCursor(Qt.PointingHandCursor)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(0, -3, 231, 81))
         self.label.setText("")
@@ -370,7 +384,6 @@ class Ui_MainWindow(object):
         self.doesntDetectButton.setObjectName("doesntDetectButton")
         self.updatingPage = QtWidgets.QFrame(self.centralwidget)
         self.updatingPage.setGeometry(QtCore.QRect(0, 80, 1071, 521))
-        self.updatingPage.setMaximumSize(QtCore.QSize(2112121, 2121212))
         self.updatingPage.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.updatingPage.setFrameShadow(QtWidgets.QFrame.Raised)
         self.updatingPage.setObjectName("updatingPage")
@@ -421,14 +434,14 @@ class Ui_MainWindow(object):
         self.progressBar_2.setInvertedAppearance(False)
         self.progressBar_2.setObjectName("progressBar_2")
         self.radioButton = QtWidgets.QRadioButton(self.updatingPage)
-        self.radioButton.setGeometry(QtCore.QRect(250, 90, 151, 21))
+        self.radioButton.setGeometry(QtCore.QRect(250, 90, 311, 21))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.radioButton.setFont(font)
         self.radioButton.setChecked(True)
         self.radioButton.setObjectName("radioButton")
         self.radioButton_2 = QtWidgets.QRadioButton(self.updatingPage)
-        self.radioButton_2.setGeometry(QtCore.QRect(250, 140, 191, 17))
+        self.radioButton_2.setGeometry(QtCore.QRect(250, 260, 191, 17))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.radioButton_2.setFont(font)
@@ -442,34 +455,31 @@ class Ui_MainWindow(object):
         self.label_25.setFont(font)
         self.label_25.setObjectName("label_25")
         self.customRomFrame = QtWidgets.QFrame(self.updatingPage)
-        self.customRomFrame.setGeometry(QtCore.QRect(260, 160, 421, 131))
+        self.customRomFrame.setGeometry(QtCore.QRect(250, 280, 741, 101))
         self.customRomFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.customRomFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.customRomFrame.setObjectName("customRomFrame")
         self.bootInput = QtWidgets.QLineEdit(self.customRomFrame)
-        self.bootInput.setGeometry(QtCore.QRect(10, 10, 291, 21))
+        self.bootInput.setGeometry(QtCore.QRect(10, 10, 231, 21))
         self.bootInput.setObjectName("bootInput")
         self.systemInput = QtWidgets.QLineEdit(self.customRomFrame)
-        self.systemInput.setGeometry(QtCore.QRect(10, 40, 291, 21))
+        self.systemInput.setGeometry(QtCore.QRect(10, 40, 231, 21))
         self.systemInput.setObjectName("systemInput")
         self.recoveryInput = QtWidgets.QLineEdit(self.customRomFrame)
-        self.recoveryInput.setGeometry(QtCore.QRect(10, 70, 291, 21))
+        self.recoveryInput.setGeometry(QtCore.QRect(10, 70, 231, 21))
         self.recoveryInput.setObjectName("recoveryInput")
         self.selectBootFile = QtWidgets.QPushButton(self.customRomFrame)
-        self.selectBootFile.setGeometry(QtCore.QRect(310, 10, 91, 23))
+        self.selectBootFile.setGeometry(QtCore.QRect(250, 10, 91, 23))
         self.selectBootFile.setObjectName("selectBootFile")
         self.selectSystemFile = QtWidgets.QPushButton(self.customRomFrame)
-        self.selectSystemFile.setGeometry(QtCore.QRect(310, 40, 91, 23))
+        self.selectSystemFile.setGeometry(QtCore.QRect(250, 40, 91, 23))
         self.selectSystemFile.setObjectName("selectSystemFile")
         self.selectRecoveryFile = QtWidgets.QPushButton(self.customRomFrame)
-        self.selectRecoveryFile.setGeometry(QtCore.QRect(310, 70, 91, 23))
+        self.selectRecoveryFile.setGeometry(QtCore.QRect(250, 70, 91, 23))
         self.selectRecoveryFile.setObjectName("selectRecoveryFile")
-        self.radioButton_3 = QtWidgets.QRadioButton(self.updatingPage)
-        self.radioButton_3.setGeometry(QtCore.QRect(250, 116, 191, 16))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.radioButton_3.setFont(font)
-        self.radioButton_3.setObjectName("radioButton_3")
+        self.listWidget = QtWidgets.QListWidget(self.updatingPage)
+        self.listWidget.setGeometry(QtCore.QRect(250, 120, 791, 131))
+        self.listWidget.setObjectName("listWidget")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.updatingPage.hide()
@@ -495,14 +505,18 @@ class Ui_MainWindow(object):
 
         self.radioButton.clicked.connect(self.CheckRadioButtons)
         self.radioButton_2.clicked.connect(self.CheckRadioButtons)
-        self.radioButton_3.clicked.connect(self.CheckRadioButtons)
+
 
         self.selectBootFile.clicked.connect(self.SelectBootFile)
         self.selectRecoveryFile.clicked.connect(self.SelectRecoveryFile)
         self.selectSystemFile.clicked.connect(self.SelectSystemFile)
+        self.downloadsButton.clicked.connect(self.OpenFirmwares)
 
         self.progressBar_2.setMaximum(100)
         self.statusText.setText("")
+
+        self.listWidget.addItems(["-------------- Firmware from Google -------------", "[*] Google XE 24 Firmware (Android 4) ROOTED", "[*] Google XE 21 Firmware (Android 4) NOT ROOTED", "[*] Google XE 20.1 Firmware (Android 4) NOT ROOTED", "[*] Google XE 19.1 Firmware (Android 4) NOT ROOTED", "[*] Google XE 18.3 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.31 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.3 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.2 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.1 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17 Firmware (Android 4) NOT ROOTED", "[*] Google XE 16.2 Firmware (Android 4) NOT ROOTED", "[*] Google XE 16.11 Firmware (Android 4) NOT ROOTED", "[*] Google XE 16 Firmware (Android 4) NOT ROOTED", "[*] Google XE 12 Firmware (Android 4) NOT ROOTED", "--------------------------- Other --------------------------", "[*] AOSP 5.1.1 ROOTED"])
+
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -539,6 +553,40 @@ class Ui_MainWindow(object):
 
         if file_path:
              self.systemInput.setText(file_path)
+
+    def get_download_url(self):
+         if self.listWidget.currentItem().text() == "[*] Google XE 24 Firmware (Android 4) ROOTED":
+              return "already downloaded", "xe24"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 21 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe21/signed-glass_1-img-1410200.zip?hl=ru", "xe21"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 20.1 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe20.1/signed-glass_1-img-1356845.zip?hl=ru", "xe20.1"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 19.1 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe19.1/signed-glass_1-img-1279109.zip?hl=ru", "xe19.1"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 18.3 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe18.3/signed-glass_1-img-1252257.zip?hl=ru", "xe18.3"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 17.31 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe17.31/signed-glass_1-img-1216444.zip?hl=ru", "xe17.31"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 17.3 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe17.3/signed-glass_1-img-1202243.zip?hl=ru", "xe17.3"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 17.2 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe17.2/signed-glass_1-img-1180275.zip?hl=ru", "xe17.2"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 17.1 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe17.1/signed-glass_1-img-1163488.zip?hl=ru", "xe17.1"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 17 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe17/signed-glass_1-img-1152835.zip?hl=ru", "xe17"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 16.2 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe16.2/signed-glass_1-img-1140829.zip?hl=ru", "xe16.2"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 16.11 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe16.11/signed-glass_1-img-1134415.zip?hl=ru", "xe16.11"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 16 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe16/signed-glass_1-img-1124447.zip?hl=ru", "xe16"
+         elif self.listWidget.currentItem().text() == "[*] Google XE 12 Firmware (Android 4) NOT ROOTED":
+              return "https://dl.google.com/glass/xe12/signed-glass_1-img-947604.zip?hl=ru", "xe12"
+         elif self.listWidget.currentItem().text() == "[*] AOSP 5.1.1 ROOTED":
+              return "aosp5", "aosp5"
+         else:
+              return "incorrect", "incorrect"
 
     def CheckRadioButtons(self):
          if self.radioButton_2.isChecked() != True:
@@ -587,20 +635,100 @@ class Ui_MainWindow(object):
         time.sleep(1)
 
         self.statusText.setText("Device detected!")
+        self.listWidget.setEnabled(False)
         time.sleep(1)
         self.statusText.setText("Unlocking bootloader ...")
         os.system("C:/Glassy/platform_tools/fastboot.exe oem unlock")
         os.system("C:/Glassy/platform_tools/fastboot.exe oem unlock")
         if self.radioButton.isChecked() == True:
-                self.statusText.setText("Flashing boot.img (5496 KB) ...")
-                os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/firmware/boot.img")
-                self.statusText.setText("Flashing system.img (627202 KB) ...")
-                os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/firmware/system.img")
-                self.statusText.setText("Flashing recovery.img (6196 KB) ...")
-                os.system("C:/Glassy/platform_tools/fastboot.exe flash recovery C:/Glassy/firmware/recovery.img")
-                self.statusText.setText("Erasing cache and userdata ...")
-                os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
+                url, version = self.get_download_url()
+                if url == "already downloaded":
+                        self.statusText.setText("Flashing boot.img ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/firmware/boot.img")
+                        self.statusText.setText("Flashing system.img ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/firmware/system.img")
+                        self.statusText.setText("Flashing recovery.img ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe flash recovery C:/Glassy/firmware/recovery.img")
+                        self.statusText.setText("Erasing cache and userdata ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
+                elif url == "aosp5":
+                     if os.path.exists("C:/Glassy/aosp5/system.img") and os.path.exists("C:/Glassy/aosp5/boot.img"):
+                        self.statusText.setText("Flashing system.img ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/aosp5/system.img")
+                        self.statusText.setText("Flashing boot.img ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/aosp5/boot.img")
+                        self.statusText.setText("Erasing cache and userdata ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
+                     else:
+                        if os.path.exists("C:/Glassy/aosp5/"):
+                                shutil.rmtree("C:/Glassy/aosp5")
+                        self.statusText.setText("Requesting download link...")
+                        os.chdir("C:/Glassy/")
+                        os.mkdir("aosp5")
+                        os.chdir("aosp5")
+                        response = requests.get(url="https://glassy-f1645-default-rtdb.firebaseio.com/link.json")
+                        urlToDownload = f"https://drop.xtrafrancyz.net/selif/{response.json()}"
+                        self.statusText.setText("Downloading AOSP 5.1.1 ... 0%")
+                        r = requests.get(url=urlToDownload, stream=True)
+                        total = int(r.headers.get('content-length', 0))
+                        downloaded = 0
+                        with open("aosp5.zip", "wb") as file:
+                                for chunk in r.iter_content(chunk_size=8192):
+                                     file.write(chunk)
+                                     downloaded += len(chunk)
+                                     percent = (downloaded / total) * 100
+                                     self.statusText.setText(f"Downloading AOSP 5.1.1 ... {round(percent)}%")
+
+                        self.statusText.setText("Unpacking ...")
+                        aospZip = ZipFile(file="aosp5.zip")
+                        aospZip.extractall()
+                        aospZip.close()
+                        os.remove("aosp5.zip")
+                        self.statusText.setText("Flashing system.img ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/aosp5/system.img")
+                        self.statusText.setText("Flashing boot.img ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/aosp5/boot.img")
+                        self.statusText.setText("Erasing cache and userdata ...")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
+                        os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
+                elif url == "incorrect":
+                     self.statusText.setText("Please choose firmware")
+                     self.progressBar_2.setMaximum(100)
+                     self.installXE24Button.setEnabled(True)
+                     self.installXE24Button.setText("Install")
+                     self.listWidget.setEnabled(True)
+                     sys.exit()
+                else:
+                     if os.path.exists(f"C:/Glassy/{version}/"):
+                                shutil.rmtree(f"C:/Glassy/{version}")
+                     self.statusText.setText(f"Downloading {version} ... 0%")
+                     os.chdir("C:/Glassy")
+                     os.mkdir(version)
+                     os.chdir(version)
+                     r = requests.get(url=url, stream=True)
+                     total = int(r.headers.get('content-length', 0))
+                     downloaded = 0
+                     with open(f"{version}.zip", "wb") as file:
+                          for chunk in r.iter_content(chunk_size=8192):
+                               file.write(chunk)
+                               downloaded += len(chunk)
+                               percent = (downloaded / total) * 100
+                               self.statusText.setText(f"Downloading {version} ... {round(percent)}%")
+                     self.statusText.setText("Unpacking ...")
+                     firmware = ZipFile(file=f"{version}.zip")
+                     firmware.extractall()
+                     firmware.close()
+                     os.remove(f"{version}.zip")
+                     self.statusText.setText("Flashing system.img ...")
+                     os.system(f"C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/{version}/system.img")
+                     self.statusText.setText("Flashing boot.img ...")
+                     os.system(f"C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/{version}/boot.img")
+                     self.statusText.setText("Erasing cache and userdata ...")
+                     os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
+                     os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
+
         elif self.radioButton_2.isChecked() == True:
              if self.systemInput.text() != "" and self.bootInput.text() != "":
                 self.statusText.setText("Flashing system.img ...")
@@ -613,41 +741,6 @@ class Ui_MainWindow(object):
                 self.statusText.setText("Erasing cache and userdata ...")
                 os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
                 os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
-        elif self.radioButton_3.isChecked() == True:
-             if os.path.exists("C:/Glassy/aosp5/system.img") and os.path.exists("C:/Glassy/aosp5/boot.img"):
-                  self.statusText.setText("Flashing system.img ...")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/aosp5/system.img")
-                  self.statusText.setText("Flashing boot.img ...")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/aosp5/boot.img")
-                  self.statusText.setText("Erasing cache and userdata ...")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
-             else:
-                  if os.path.exists("C:/Glassy/aosp5/"):
-                       shutil.rmtree("C:/Glassy/aosp5")
-                  self.statusText.setText("Requesting download link...")
-                  os.chdir("C:/Glassy/")
-                  os.mkdir("aosp5")
-                  os.chdir("aosp5")
-                  response = requests.get(url="https://glassy-f1645-default-rtdb.firebaseio.com/link.json")
-                  urlToDownload = f"https://drop.xtrafrancyz.net/selif/{response.json()}"
-                  self.statusText.setText("Downloading AOSP 5.1.1 ...")
-                  r = requests.get(url=urlToDownload)
-                  with open("aosp5.zip", "wb") as file:
-                       file.write(r.content)
-
-                  self.statusText.setText("Unpacking ...")
-                  aospZip = ZipFile(file="aosp5.zip")
-                  aospZip.extractall()
-                  aospZip.close()
-                  os.remove("aosp5.zip")
-                  self.statusText.setText("Flashing system.img ...")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/aosp5/system.img")
-                  self.statusText.setText("Flashing boot.img ...")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/aosp5/boot.img")
-                  self.statusText.setText("Erasing cache and userdata ...")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                  os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
 
         self.statusText.setText("Rebooting ...")
         time.sleep(1)
@@ -662,6 +755,7 @@ class Ui_MainWindow(object):
         self.updatingPage.hide()
         self.deviceFrame.hide()
         self.searchingFrame.show()
+        self.listWidget.setEnabled(True)
 
         searchThread = threading.Thread(target=self.DeviceSearching)
         searchThread.start()
@@ -718,6 +812,13 @@ class Ui_MainWindow(object):
         self.delete_ui.setupUi(self.delete_window)
 
         self.delete_window.show()
+        
+    def OpenFirmwares(self):
+        self.firmwares_window = QtWidgets.QMainWindow()
+        self.firmwares_ui = Firmwares()
+        self.firmwares_ui.setupUi(self.firmwares_window)
+
+        self.firmwares_window.show()
 
     def OpenPrograms(self):
         self.showButton.setText("Loading...")
@@ -972,7 +1073,7 @@ class Ui_MainWindow(object):
         self.label_24.setText(_translate("MainWindow", "Installation"))
         self.installXE24Button.setText(_translate("MainWindow", "Install"))
         self.statusText.setText(_translate("MainWindow", "Waiting ..."))
-        self.radioButton.setText(_translate("MainWindow", "Install XE24"))
+        self.radioButton.setText(_translate("MainWindow", "Install:"))
         self.radioButton_2.setText(_translate("MainWindow", "Custom"))
         self.label_25.setText(_translate("MainWindow", "What firmware do you want to install?"))
         self.bootInput.setPlaceholderText(_translate("MainWindow", "Select boot.img file ..."))
@@ -981,7 +1082,6 @@ class Ui_MainWindow(object):
         self.selectBootFile.setText(_translate("MainWindow", "Select"))
         self.selectSystemFile.setText(_translate("MainWindow", "Select"))
         self.selectRecoveryFile.setText(_translate("MainWindow", "Select"))
-        self.radioButton_3.setText(_translate("MainWindow", "Install AOSP 5.1.1"))
 
 
 if __name__ == "__main__":
