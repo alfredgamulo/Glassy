@@ -13,9 +13,12 @@ An All-in-One Utility for Google Glass
 * Rooting the installed system
 * Simple installation of .apk files on Google Glass, as well as easy removal
 * Various tweaks (like Launchy to run installed .apk files directly on the glasses)
+* Screen Mirroring
 * Windows 8.1 support
 
 # How to install
+
+Install Java
 
 Download ``Glassy.exe`` and run it (yes, it's 400 MB because I included the XE24 firmware in the installer).
 
