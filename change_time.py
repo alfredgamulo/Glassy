@@ -52,16 +52,24 @@ class ChangeTime(object):
 
     def ChangeTime(self):
         time = self.lineEdit.text()
-        os.system(f'C:/Glassy/platform_tools/adb.exe shell settings put global auto_time 0')
-        os.system(f'C:/Glassy/platform_tools/adb.exe shell "toolbox date -s {time}"')
-        os.system(f'C:/Glassy/platform_tools/adb.exe reboot')
+        if time != "":
+            os.system(f'C:/Glassy/platform_tools/adb.exe shell settings put global auto_time 0')
+            os.system(f'C:/Glassy/platform_tools/adb.exe shell "toolbox date -s {time}"')
+            os.system(f'C:/Glassy/platform_tools/adb.exe reboot')
 
-        msg = QMessageBox()
+            msg = QMessageBox()
 
-        msg.setWindowTitle("Done")
-        msg.setText("Done! Rebooting your Google Glass")
+            msg.setWindowTitle("Done")
+            msg.setText("Done! Rebooting your Google Glass")
 
-        msg.exec_()
+            msg.exec_()
+        else:
+            msg = QMessageBox()
+
+            msg.setWindowTitle("Error")
+            msg.setText("Enter date and time")
+
+            msg.exec_()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

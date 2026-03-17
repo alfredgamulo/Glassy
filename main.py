@@ -16,7 +16,6 @@ from PyQt5.QtCore import Qt
 from change_time import ChangeTime
 from programs import Programs
 from delete import Remove
-from firmwares import Firmwares
 
 from art import text2art
 from zipfile import ZipFile
@@ -35,7 +34,7 @@ ctypes.windll.shcore.SetProcessDpiAwareness(0)
 base_dir = os.path.dirname(__file__)
 
 print(text2art("Glassy"))
-print("==> Version: 1.1 <==")
+print("==> Version: 1.2 <==")
 print("Developed by zeroxdev")
 
 
@@ -65,16 +64,6 @@ class Ui_MainWindow(object):
         self.pageTitle.setStyleSheet("color: rgb(255, 255, 255);")
         self.pageTitle.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing)
         self.pageTitle.setObjectName("pageTitle")
-        self.downloadsButton = QtWidgets.QPushButton(self.frame)
-        self.downloadsButton.setGeometry(QtCore.QRect(860, 36, 51, 31))
-        self.downloadsButton.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
-        self.downloadsButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/downloads.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.downloadsButton.setIcon(icon)
-        self.downloadsButton.setIconSize(QtCore.QSize(30, 30))
-        self.downloadsButton.setObjectName("downloadsButton")
-        self.downloadsButton.setCursor(Qt.PointingHandCursor)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(0, -3, 231, 81))
         self.label.setText("")
@@ -169,7 +158,7 @@ class Ui_MainWindow(object):
         self.uninstallButton.setFlat(False)
         self.uninstallButton.setObjectName("uninstallButton")
         self.updatesButton = QtWidgets.QPushButton(self.deviceFrame)
-        self.updatesButton.setGeometry(QtCore.QRect(15, 410, 91, 31))
+        self.updatesButton.setGeometry(QtCore.QRect(15, 407, 91, 31))
         self.updatesButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.updatesButton.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.updatesButton.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
@@ -293,26 +282,18 @@ class Ui_MainWindow(object):
         self.label_15.setScaledContents(True)
         self.label_15.setObjectName("label_15")
         self.label_16 = QtWidgets.QLabel(self.frame_7)
-        self.label_16.setGeometry(QtCore.QRect(110, 20, 161, 31))
+        self.label_16.setGeometry(QtCore.QRect(90, 20, 111, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_16.setFont(font)
         self.label_16.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_16.setObjectName("label_16")
-        self.label_17 = QtWidgets.QLabel(self.frame_7)
-        self.label_17.setGeometry(QtCore.QRect(110, 40, 531, 31))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_17.setFont(font)
-        self.label_17.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-"border: 0px solid white;")
-        self.label_17.setObjectName("label_17")
         self.showButton = QtWidgets.QPushButton(self.deviceFrame)
         self.showButton.setGeometry(QtCore.QRect(950, 296, 71, 41))
         self.showButton.setObjectName("showButton")
         self.frame_8 = QtWidgets.QFrame(self.deviceFrame)
-        self.frame_8.setGeometry(QtCore.QRect(250, 380, 781, 61))
+        self.frame_8.setGeometry(QtCore.QRect(250, 380, 461, 61))
         self.frame_8.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border: 1px solid black;")
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -335,7 +316,7 @@ class Ui_MainWindow(object):
 "border: 0px solid white;")
         self.label_34.setObjectName("label_34")
         self.installFastbootdriversButton = QtWidgets.QPushButton(self.deviceFrame)
-        self.installFastbootdriversButton.setGeometry(QtCore.QRect(850, 390, 161, 41))
+        self.installFastbootdriversButton.setGeometry(QtCore.QRect(540, 390, 161, 41))
         self.installFastbootdriversButton.setObjectName("installFastbootdriversButton")
         self.label_2 = QtWidgets.QLabel(self.deviceFrame)
         self.label_2.setGeometry(QtCore.QRect(20, 350, 21, 21))
@@ -350,29 +331,63 @@ class Ui_MainWindow(object):
         self.label_18.setScaledContents(True)
         self.label_18.setObjectName("label_18")
         self.label_19 = QtWidgets.QLabel(self.deviceFrame)
-        self.label_19.setGeometry(QtCore.QRect(20, 414, 21, 27))
+        self.label_19.setGeometry(QtCore.QRect(20, 411, 21, 27))
         self.label_19.setText("")
         self.label_19.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/updates.png")))
         self.label_19.setScaledContents(True)
         self.label_19.setObjectName("label_19")
+        self.frame_9 = QtWidgets.QFrame(self.deviceFrame)
+        self.frame_9.setGeometry(QtCore.QRect(720, 380, 311, 61))
+        self.frame_9.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border: 1px solid black;")
+        self.frame_9.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_9.setObjectName("frame_9")
+        self.label_20 = QtWidgets.QLabel(self.frame_9)
+        self.label_20.setGeometry(QtCore.QRect(30, 10, 41, 41))
+        self.label_20.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+"border: 0px solid white;")
+        self.label_20.setText("")
+        self.label_20.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/mirror.png")))
+        self.label_20.setScaledContents(True)
+        self.label_20.setObjectName("label_20")
+        self.label_21 = QtWidgets.QLabel(self.frame_9)
+        self.label_21.setGeometry(QtCore.QRect(80, 14, 161, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_21.setFont(font)
+        self.label_21.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+"border: 0px solid white;")
+        self.label_21.setObjectName("label_21")
+        self.label_17 = QtWidgets.QLabel(self.deviceFrame)
+        self.label_17.setGeometry(QtCore.QRect(820, 310, 531, 31))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_17.setFont(font)
+        self.label_17.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+"border: 0px solid white;")
+        self.label_17.setObjectName("label_17")
+        self.mirrorButton = QtWidgets.QPushButton(self.deviceFrame)
+        self.mirrorButton.setGeometry(QtCore.QRect(940, 390, 81, 41))
+        self.mirrorButton.setObjectName("mirrorButton")
         self.searchingFrame = QtWidgets.QFrame(self.centralwidget)
         self.searchingFrame.setGeometry(QtCore.QRect(0, 80, 1071, 521))
         self.searchingFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.searchingFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.searchingFrame.setObjectName("searchingFrame")
-        self.label_20 = QtWidgets.QLabel(self.searchingFrame)
-        self.label_20.setGeometry(QtCore.QRect(0, 200, 1071, 41))
+        self.connectGlassToContinue = QtWidgets.QLabel(self.searchingFrame)
+        self.connectGlassToContinue.setGeometry(QtCore.QRect(0, 200, 1071, 41))
         font = QtGui.QFont()
         font.setPointSize(20)
-        self.label_20.setFont(font)
-        self.label_20.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_20.setObjectName("label_20")
-        self.label_21 = QtWidgets.QLabel(self.searchingFrame)
-        self.label_21.setGeometry(QtCore.QRect(520, 150, 41, 41))
-        self.label_21.setText("")
-        self.label_21.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/loading.png")))
-        self.label_21.setScaledContents(True)
-        self.label_21.setObjectName("label_21")
+        self.connectGlassToContinue.setFont(font)
+        self.connectGlassToContinue.setAlignment(QtCore.Qt.AlignCenter)
+        self.connectGlassToContinue.setObjectName("connectGlassToContinue")
+        self.label_22 = QtWidgets.QLabel(self.searchingFrame)
+        self.label_22.setGeometry(QtCore.QRect(520, 150, 41, 41))
+        self.label_22.setText("")
+        self.label_22.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/loading.png")))
+        self.label_22.setScaledContents(True)
+        self.label_22.setObjectName("label_22")
         self.doesntDetectButton = QtWidgets.QPushButton(self.searchingFrame)
         self.doesntDetectButton.setGeometry(QtCore.QRect(370, 250, 341, 21))
         font = QtGui.QFont()
@@ -394,29 +409,29 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
-        self.label_22 = QtWidgets.QLabel(self.frame_3)
-        self.label_22.setGeometry(QtCore.QRect(0, 100, 201, 141))
-        self.label_22.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+        self.label_23 = QtWidgets.QLabel(self.frame_3)
+        self.label_23.setGeometry(QtCore.QRect(0, 100, 201, 141))
+        self.label_23.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
-        self.label_22.setText("")
-        self.label_22.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/glass.png")))
-        self.label_22.setScaledContents(True)
-        self.label_22.setObjectName("label_22")
-        self.label_23 = QtWidgets.QLabel(self.updatingPage)
-        self.label_23.setGeometry(QtCore.QRect(20, 20, 131, 21))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.label_23.setFont(font)
+        self.label_23.setText("")
+        self.label_23.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/glass.png")))
+        self.label_23.setScaledContents(True)
         self.label_23.setObjectName("label_23")
-        self.rebootIntoSystemButton = QtWidgets.QPushButton(self.updatingPage)
-        self.rebootIntoSystemButton.setGeometry(QtCore.QRect(20, 396, 201, 31))
-        self.rebootIntoSystemButton.setObjectName("rebootIntoSystemButton")
         self.label_24 = QtWidgets.QLabel(self.updatingPage)
-        self.label_24.setGeometry(QtCore.QRect(240, 20, 131, 21))
+        self.label_24.setGeometry(QtCore.QRect(20, 20, 131, 21))
         font = QtGui.QFont()
         font.setPointSize(11)
         self.label_24.setFont(font)
         self.label_24.setObjectName("label_24")
+        self.rebootIntoSystemButton = QtWidgets.QPushButton(self.updatingPage)
+        self.rebootIntoSystemButton.setGeometry(QtCore.QRect(20, 396, 201, 31))
+        self.rebootIntoSystemButton.setObjectName("rebootIntoSystemButton")
+        self.label_25 = QtWidgets.QLabel(self.updatingPage)
+        self.label_25.setGeometry(QtCore.QRect(240, 20, 131, 21))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_25.setFont(font)
+        self.label_25.setObjectName("label_25")
         self.installXE24Button = QtWidgets.QPushButton(self.updatingPage)
         self.installXE24Button.setGeometry(QtCore.QRect(20, 430, 201, 31))
         self.installXE24Button.setObjectName("installXE24Button")
@@ -446,14 +461,14 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.radioButton_2.setFont(font)
         self.radioButton_2.setObjectName("radioButton_2")
-        self.label_25 = QtWidgets.QLabel(self.updatingPage)
-        self.label_25.setGeometry(QtCore.QRect(240, 50, 421, 31))
+        self.label_26 = QtWidgets.QLabel(self.updatingPage)
+        self.label_26.setGeometry(QtCore.QRect(240, 50, 421, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
-        self.label_25.setFont(font)
-        self.label_25.setObjectName("label_25")
+        self.label_26.setFont(font)
+        self.label_26.setObjectName("label_26")
         self.customRomFrame = QtWidgets.QFrame(self.updatingPage)
         self.customRomFrame.setGeometry(QtCore.QRect(250, 280, 741, 101))
         self.customRomFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -486,6 +501,10 @@ class Ui_MainWindow(object):
         self.deviceFrame.hide()
         self.customRomFrame.hide()
 
+        self.updatingPage.hide()
+        self.deviceFrame.hide()
+        self.customRomFrame.hide()
+
         searchThread = threading.Thread(target=self.DeviceSearching)
         searchThread.start()
 
@@ -510,7 +529,8 @@ class Ui_MainWindow(object):
         self.selectBootFile.clicked.connect(self.SelectBootFile)
         self.selectRecoveryFile.clicked.connect(self.SelectRecoveryFile)
         self.selectSystemFile.clicked.connect(self.SelectSystemFile)
-        self.downloadsButton.clicked.connect(self.OpenFirmwares)
+
+        self.mirrorButton.clicked.connect(self.ScreenMirroring)
 
         self.progressBar_2.setMaximum(100)
         self.statusText.setText("")
@@ -518,8 +538,23 @@ class Ui_MainWindow(object):
         self.listWidget.addItems(["-------------- Firmware from Google -------------", "[*] Google XE 24 Firmware (Android 4) ROOTED", "[*] Google XE 21 Firmware (Android 4) NOT ROOTED", "[*] Google XE 20.1 Firmware (Android 4) NOT ROOTED", "[*] Google XE 19.1 Firmware (Android 4) NOT ROOTED", "[*] Google XE 18.3 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.31 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.3 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.2 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17.1 Firmware (Android 4) NOT ROOTED", "[*] Google XE 17 Firmware (Android 4) NOT ROOTED", "[*] Google XE 16.2 Firmware (Android 4) NOT ROOTED", "[*] Google XE 16.11 Firmware (Android 4) NOT ROOTED", "[*] Google XE 16 Firmware (Android 4) NOT ROOTED", "[*] Google XE 12 Firmware (Android 4) NOT ROOTED", "--------------------------- Other --------------------------", "[*] AOSP 5.1.1 ROOTED"])
 
 
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def ScreenMirroring(self):
+         self.mirrorButton.setText("Connecting...")
+         thread = threading.Thread(target=self.ScreenMirroringThread)
+         thread.start()
+
+    def ScreenMirroringThread(self):
+         subprocess.Popen(
+              ["java", "-jar", "C:/Glassy/asm/asm.jar"]
+         )
+
+         time.sleep(3)
+
+         self.mirrorButton.setText("Start")
 
     def SelectBootFile(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -602,7 +637,7 @@ class Ui_MainWindow(object):
         self.updatingPage.hide()
         self.searchingFrame.show()
 
-        self.label_20.setText("Waiting for device in FastBoot...")
+        self.connectGlassToContinue.setText("Waiting for device in Fastboot...")
 
         searchThread = threading.Thread(target=self.DeviceSearching)
         searchThread.start()
@@ -611,6 +646,7 @@ class Ui_MainWindow(object):
     def InstallXE24ButtonClick(self):
         self.installXE24Button.setEnabled(False)
         self.installXE24Button.setText("Installing ...")
+        self.rebootIntoSystemButton.setEnabled(False)
         self.progressBar_2.setMaximum(0)
         self.statusText.setText("Waiting for device ...")
         eraseThread = threading.Thread(target=self.FindDeviceAndErase)
@@ -698,6 +734,7 @@ class Ui_MainWindow(object):
                      self.progressBar_2.setMaximum(100)
                      self.installXE24Button.setEnabled(True)
                      self.installXE24Button.setText("Install")
+                     self.rebootIntoSystemButton.setEnabled(True)
                      self.listWidget.setEnabled(True)
                      sys.exit()
                 else:
@@ -750,6 +787,7 @@ class Ui_MainWindow(object):
 
         self.installXE24Button.setEnabled(True)
         self.installXE24Button.setText("Install")
+        self.rebootIntoSystemButton.setEnabled(True)
         self.progressBar_2.setMaximum(100)
 
         self.updatingPage.hide()
@@ -760,7 +798,7 @@ class Ui_MainWindow(object):
         searchThread = threading.Thread(target=self.DeviceSearching)
         searchThread.start()
 
-        self.label_20.setText("Connect your glasses to continue")
+        self.connectGlassToContinue.setText("Connect your glasses to continue")
 
         sys.exit()
         
@@ -812,13 +850,6 @@ class Ui_MainWindow(object):
         self.delete_ui.setupUi(self.delete_window)
 
         self.delete_window.show()
-        
-    def OpenFirmwares(self):
-        self.firmwares_window = QtWidgets.QMainWindow()
-        self.firmwares_ui = Firmwares()
-        self.firmwares_ui.setupUi(self.firmwares_window)
-
-        self.firmwares_window.show()
 
     def OpenPrograms(self):
         self.showButton.setText("Loading...")
@@ -877,7 +908,7 @@ class Ui_MainWindow(object):
         self.updatingPage.hide()
         self.searchingFrame.show()
 
-        self.label_20.setText("Connect your glasses to continue")
+        self.connectGlassToContinue.setText("Connect your glasses to continue")
 
         searchThread = threading.Thread(target=self.DeviceSearching)
         searchThread.start()
@@ -891,7 +922,7 @@ class Ui_MainWindow(object):
         self.updatingPage.hide()
         self.searchingFrame.show()
 
-        self.label_20.setText("Connect your glasses to continue")
+        self.connectGlassToContinue.setText("Connect your glasses to continue")
 
         searchThread = threading.Thread(target=self.DeviceSearching)
         searchThread.start()
@@ -915,7 +946,7 @@ class Ui_MainWindow(object):
         self.deviceFrame.hide()
         self.searchingFrame.show()
 
-        self.label_20.setText("Waiting for device in FastBoot...")
+        self.connectGlassToContinue.setText("Waiting for device in Fastboot...")
 
         searchThread = threading.Thread(target=self.DeviceSearching)
         searchThread.start()
@@ -992,6 +1023,17 @@ class Ui_MainWindow(object):
         for line in command.stdout.splitlines():
             applications += 1
 
+
+        if battery == 0:
+             self.connectGlassToContinue.setText("Device is still booting...")
+             time.sleep(20)
+             searchThread = threading.Thread(target=self.DeviceSearching)
+             searchThread.start()
+
+        else:
+             self.searchingFrame.hide()
+             self.deviceFrame.show()
+
         self.batteryText.setText(f"Battery: {battery}%")
         self.applicationsText.setText(f"Applications: {str(applications / 2).replace(".0", "")}")
         self.batteryText_2.setText(f"Firmware: {firmware}")
@@ -1012,13 +1054,11 @@ class Ui_MainWindow(object):
                 linecount += 1
 
             if linecount == 3:
-                self.label_20.setText("Connecting to device...")
+                self.connectGlassToContinue.setText("Connecting to device...")
                 self.batteryText.setText("Battery: Loading...")
                 self.applicationsText.setText("Applications: Loading...")
                 self.batteryText_2.setText("Firmware: Loading...")
-                time.sleep(1)
-                self.searchingFrame.hide()
-                self.deviceFrame.show()
+                time.sleep(0.5)
                 self.update_device_info()
                 sys.exit()
             else:
@@ -1030,7 +1070,7 @@ class Ui_MainWindow(object):
                 )
 
                 if "fastboot" in command.stdout.strip():
-                    self.label_20.setText("Connecting to device...")
+                    self.connectGlassToContinue.setText("Connecting to device...")
                     time.sleep(1)
                     self.searchingFrame.hide()
                     self.updatingPage.show()
@@ -1052,30 +1092,32 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "Useful features"))
         self.uninstallButton.setText(_translate("MainWindow", " Uninstall app"))
         self.updatesButton.setText(_translate("MainWindow", "Erase"))
-        self.label_7.setText(_translate("MainWindow", "Install Launchy?"))
+        self.label_7.setText(_translate("MainWindow", "Install Launchy"))
         self.label_8.setText(_translate("MainWindow", "Launch apps installed via ADB directly from the glasses without connecting to a computer."))
         self.installLaunchy.setText(_translate("MainWindow", "Install"))
         self.label_10.setText(_translate("MainWindow", "Change time "))
         self.label_11.setText(_translate("MainWindow", "Change the time on your Google Glass"))
         self.changeTimeButton.setText(_translate("MainWindow", "Change"))
         self.label_13.setText(_translate("MainWindow", "Command Line"))
-        self.label_14.setText(_translate("MainWindow", "Execute commands on your Glass"))
+        self.label_14.setText(_translate("MainWindow", "Execute commands on your Glasses"))
         self.commandsExecuteButton.setText(_translate("MainWindow", "Start"))
         self.label_16.setText(_translate("MainWindow", "Programs"))
-        self.label_17.setText(_translate("MainWindow", "List of programs"))
         self.showButton.setText(_translate("MainWindow", "Show"))
         self.label_34.setText(_translate("MainWindow", "Install Fastboot Drivers"))
         self.installFastbootdriversButton.setText(_translate("MainWindow", "Install"))
-        self.label_20.setText(_translate("MainWindow", "Connect your glasses to continue"))
+        self.label_21.setText(_translate("MainWindow", "Screen Mirroring"))
+        self.label_17.setText(_translate("MainWindow", "List of programs"))
+        self.mirrorButton.setText(_translate("MainWindow", "Start"))
+        self.connectGlassToContinue.setText(_translate("MainWindow", "Connect your glasses to continue"))
         self.doesntDetectButton.setText(_translate("MainWindow", "The program doesn\'t detect the device?"))
-        self.label_23.setText(_translate("MainWindow", "Device Info"))
+        self.label_24.setText(_translate("MainWindow", "Device Info"))
         self.rebootIntoSystemButton.setText(_translate("MainWindow", "Exit fastboot"))
-        self.label_24.setText(_translate("MainWindow", "Installation"))
+        self.label_25.setText(_translate("MainWindow", "Installation"))
         self.installXE24Button.setText(_translate("MainWindow", "Install"))
         self.statusText.setText(_translate("MainWindow", "Waiting ..."))
         self.radioButton.setText(_translate("MainWindow", "Install:"))
         self.radioButton_2.setText(_translate("MainWindow", "Custom"))
-        self.label_25.setText(_translate("MainWindow", "What firmware do you want to install?"))
+        self.label_26.setText(_translate("MainWindow", "What firmware do you want to install?"))
         self.bootInput.setPlaceholderText(_translate("MainWindow", "Select boot.img file ..."))
         self.systemInput.setPlaceholderText(_translate("MainWindow", "Select system.img file ..."))
         self.recoveryInput.setPlaceholderText(_translate("MainWindow", "Select recovery.img file (optional) ..."))
