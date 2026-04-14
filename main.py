@@ -29,18 +29,24 @@ import time
 import threading
 import ctypes
 
-ctypes.windll.shcore.SetProcessDpiAwareness(0)
+from utils import get_executable, resource_path
+
+try:
+        ctypes.windll.shcore.SetProcessDpiAwareness(0)
+except Exception:
+        pass
 
 base_dir = os.path.dirname(__file__)
 
 print(text2art("Glassy"))
 print("==> Version: 1.2 <==")
 print("Developed by zeroxdev")
+print("Adapted by: Alfred Gamulo")
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        font_path = os.path.join(base_dir, "./fonts/Roboto_Condensed-Medium.ttf")
+        font_path = resource_path("fonts", "Roboto_Condensed-Medium.ttf")
         font_id = QFontDatabase.addApplicationFont(font_path)
         font_families = QFontDatabase.applicationFontFamilies(font_id)
         MainWindow.setObjectName("MainWindow")
@@ -67,7 +73,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(0, -3, 231, 81))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/logo.png")))
+        self.label.setPixmap(QtGui.QPixmap(resource_path("img", "logo.png")))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.deviceFrame = QtWidgets.QFrame(self.centralwidget)
@@ -87,7 +93,7 @@ class Ui_MainWindow(object):
         self.label_4.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/glass.png")))
+        self.label_4.setPixmap(QtGui.QPixmap(resource_path("img", "glass.png")))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.label_3 = QtWidgets.QLabel(self.deviceFrame)
@@ -176,7 +182,7 @@ class Ui_MainWindow(object):
         self.label_6.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_6.setText("")
-        self.label_6.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/launchy.png")))
+        self.label_6.setPixmap(QtGui.QPixmap(resource_path("img", "launchy.png")))
         self.label_6.setScaledContents(True)
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(self.frame_4)
@@ -210,7 +216,7 @@ class Ui_MainWindow(object):
         self.label_9.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_9.setText("")
-        self.label_9.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/clock.png")))
+        self.label_9.setPixmap(QtGui.QPixmap(resource_path("img", "clock.png")))
         self.label_9.setScaledContents(True)
         self.label_9.setObjectName("label_9")
         self.label_10 = QtWidgets.QLabel(self.frame_5)
@@ -244,7 +250,7 @@ class Ui_MainWindow(object):
         self.label_12.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_12.setText("")
-        self.label_12.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/cmd.png")))
+        self.label_12.setPixmap(QtGui.QPixmap(resource_path("img", "cmd.png")))
         self.label_12.setScaledContents(True)
         self.label_12.setObjectName("label_12")
         self.label_13 = QtWidgets.QLabel(self.frame_6)
@@ -278,7 +284,7 @@ class Ui_MainWindow(object):
         self.label_15.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_15.setText("")
-        self.label_15.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/programs.png")))
+        self.label_15.setPixmap(QtGui.QPixmap(resource_path("img", "programs.png")))
         self.label_15.setScaledContents(True)
         self.label_15.setObjectName("label_15")
         self.label_16 = QtWidgets.QLabel(self.frame_7)
@@ -304,7 +310,7 @@ class Ui_MainWindow(object):
         self.label_33.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_33.setText("")
-        self.label_33.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/android.png")))
+        self.label_33.setPixmap(QtGui.QPixmap(resource_path("img", "android.png")))
         self.label_33.setScaledContents(True)
         self.label_33.setObjectName("label_33")
         self.label_34 = QtWidgets.QLabel(self.frame_8)
@@ -321,19 +327,19 @@ class Ui_MainWindow(object):
         self.label_2 = QtWidgets.QLabel(self.deviceFrame)
         self.label_2.setGeometry(QtCore.QRect(20, 350, 21, 21))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/install.png")))
+        self.label_2.setPixmap(QtGui.QPixmap(resource_path("img", "install.png")))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.label_18 = QtWidgets.QLabel(self.deviceFrame)
         self.label_18.setGeometry(QtCore.QRect(20, 380, 21, 21))
         self.label_18.setText("")
-        self.label_18.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/uninstall.png")))
+        self.label_18.setPixmap(QtGui.QPixmap(resource_path("img", "uninstall.png")))
         self.label_18.setScaledContents(True)
         self.label_18.setObjectName("label_18")
         self.label_19 = QtWidgets.QLabel(self.deviceFrame)
         self.label_19.setGeometry(QtCore.QRect(20, 411, 21, 27))
         self.label_19.setText("")
-        self.label_19.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/updates.png")))
+        self.label_19.setPixmap(QtGui.QPixmap(resource_path("img", "updates.png")))
         self.label_19.setScaledContents(True)
         self.label_19.setObjectName("label_19")
         self.frame_9 = QtWidgets.QFrame(self.deviceFrame)
@@ -348,7 +354,7 @@ class Ui_MainWindow(object):
         self.label_20.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_20.setText("")
-        self.label_20.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/mirror.png")))
+        self.label_20.setPixmap(QtGui.QPixmap(resource_path("img", "mirror.png")))
         self.label_20.setScaledContents(True)
         self.label_20.setObjectName("label_20")
         self.label_21 = QtWidgets.QLabel(self.frame_9)
@@ -385,7 +391,7 @@ class Ui_MainWindow(object):
         self.label_22 = QtWidgets.QLabel(self.searchingFrame)
         self.label_22.setGeometry(QtCore.QRect(520, 150, 41, 41))
         self.label_22.setText("")
-        self.label_22.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/loading.png")))
+        self.label_22.setPixmap(QtGui.QPixmap(resource_path("img", "loading.png")))
         self.label_22.setScaledContents(True)
         self.label_22.setObjectName("label_22")
         self.doesntDetectButton = QtWidgets.QPushButton(self.searchingFrame)
@@ -414,7 +420,7 @@ class Ui_MainWindow(object):
         self.label_23.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
 "border: 0px solid white;")
         self.label_23.setText("")
-        self.label_23.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/glass.png")))
+        self.label_23.setPixmap(QtGui.QPixmap(resource_path("img", "glass.png")))
         self.label_23.setScaledContents(True)
         self.label_23.setObjectName("label_23")
         self.label_24 = QtWidgets.QLabel(self.updatingPage)
@@ -513,7 +519,7 @@ class Ui_MainWindow(object):
         self.fastbootButton.clicked.connect(self.reboot_fastboot_button)
         self.apkInstallButton.clicked.connect(self.install_apk_init)
         self.installLaunchy.clicked.connect(self.install_launchy_init)
-        self.commandsExecuteButton.clicked.connect(lambda: self.run_command_as_admin("C:/Glassy/platform_tools/adb.exe shell"))
+        self.commandsExecuteButton.clicked.connect(lambda: self.run_command_as_admin(f"{get_executable('adb')} shell"))
         self.installFastbootdriversButton.clicked.connect(self.install_fastboot_driver_init)
         self.changeTimeButton.clicked.connect(self.OpenChangeDateTime)
         self.showButton.clicked.connect(self.OpenPrograms)
@@ -543,18 +549,18 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def ScreenMirroring(self):
-         self.mirrorButton.setText("Connecting...")
-         thread = threading.Thread(target=self.ScreenMirroringThread)
-         thread.start()
+        self.mirrorButton.setText("Connecting...")
+        thread = threading.Thread(target=self.ScreenMirroringThread)
+        thread.start()
 
     def ScreenMirroringThread(self):
-         subprocess.Popen(
-              ["java", "-jar", "C:/Glassy/asm/asm.jar"]
-         )
+        subprocess.Popen([
+            get_executable("java"), "-jar", resource_path("asm", "asm.jar")
+        ])
 
-         time.sleep(3)
+        time.sleep(3)
 
-         self.mirrorButton.setText("Start")
+        self.mirrorButton.setText("Start")
 
     def SelectBootFile(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -565,7 +571,7 @@ class Ui_MainWindow(object):
         )
 
         if file_path:
-             self.bootInput.setText(file_path)
+            self.bootInput.setText(file_path)
 
     def SelectRecoveryFile(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -576,7 +582,7 @@ class Ui_MainWindow(object):
         )
 
         if file_path:
-             self.recoveryInput.setText(file_path)
+            self.recoveryInput.setText(file_path)
 
     def SelectSystemFile(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -587,7 +593,7 @@ class Ui_MainWindow(object):
         )
 
         if file_path:
-             self.systemInput.setText(file_path)
+            self.systemInput.setText(file_path)
 
     def get_download_url(self):
          if self.listWidget.currentItem().text() == "[*] Google XE 24 Firmware (Android 4) ROOTED":
@@ -632,7 +638,7 @@ class Ui_MainWindow(object):
     def InstallXE24_Init(self):
         self.radioButton.setChecked(True)
         self.radioButton_2.setChecked(False)
-        os.system("C:/Glassy/platform_tools/adb.exe reboot-bootloader")
+        subprocess.run([get_executable("adb"), "reboot-bootloader"])
         self.deviceFrame.hide()
         self.updatingPage.hide()
         self.searchingFrame.show()
@@ -653,154 +659,156 @@ class Ui_MainWindow(object):
         eraseThread.start()
 
     def FindDeviceAndErase(self):
-        while True:
-                command = subprocess.run(
-                        ["C:/Glassy/platform_tools/fastboot.exe", "devices"],
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.PIPE,
-                        text=True
-                )
+                # Wait for device in fastboot mode
+                while True:
+                        command = subprocess.run(
+                                [get_executable("fastboot"), "devices"],
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE,
+                                text=True,
+                        )
 
-                if "fastboot" in command.stdout.strip():
-                        self.label_20.setText("Connecting to device...")
-                        time.sleep(1)
-                        self.searchingFrame.hide()
-                        self.updatingPage.show()
-                        break
-        
-        time.sleep(1)
+                        if "fastboot" in command.stdout.strip():
+                                self.label_20.setText("Connecting to device...")
+                                time.sleep(1)
+                                self.searchingFrame.hide()
+                                self.updatingPage.show()
+                                break
 
-        self.statusText.setText("Device detected!")
-        self.listWidget.setEnabled(False)
-        time.sleep(1)
-        self.statusText.setText("Unlocking bootloader ...")
-        os.system("C:/Glassy/platform_tools/fastboot.exe oem unlock")
-        os.system("C:/Glassy/platform_tools/fastboot.exe oem unlock")
-        if self.radioButton.isChecked() == True:
-                url, version = self.get_download_url()
-                if url == "already downloaded":
-                        self.statusText.setText("Flashing boot.img ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/firmware/boot.img")
-                        self.statusText.setText("Flashing system.img ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/firmware/system.img")
-                        self.statusText.setText("Flashing recovery.img ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe flash recovery C:/Glassy/firmware/recovery.img")
+                time.sleep(1)
+                self.statusText.setText("Device detected!")
+                self.listWidget.setEnabled(False)
+                time.sleep(1)
+                self.statusText.setText("Unlocking bootloader ...")
+                subprocess.run([get_executable("fastboot"), "oem", "unlock"])
+                subprocess.run([get_executable("fastboot"), "oem", "unlock"])
+
+                # Handle firmware options
+                if self.radioButton.isChecked() == True:
+                        url, version = self.get_download_url()
+                        if url == "already downloaded":
+                                self.statusText.setText("Flashing boot.img ...")
+                                subprocess.run([get_executable("fastboot"), "flash", "boot", resource_path("firmware", "boot.img")])
+                                self.statusText.setText("Flashing system.img ...")
+                                subprocess.run([get_executable("fastboot"), "flash", "system", resource_path("firmware", "system.img")])
+                                self.statusText.setText("Flashing recovery.img ...")
+                                subprocess.run([get_executable("fastboot"), "flash", "recovery", resource_path("firmware", "recovery.img")])
+                                self.statusText.setText("Erasing cache and userdata ...")
+                                subprocess.run([get_executable("fastboot"), "erase", "cache"])
+                                subprocess.run([get_executable("fastboot"), "erase", "userdata"])
+                        elif url == "aosp5":
+                                # Use local images if present; otherwise download
+                                if os.path.exists(resource_path("aosp5", "system.img")) and os.path.exists(resource_path("aosp5", "boot.img")):
+                                        self.statusText.setText("Flashing system.img ...")
+                                        subprocess.run([get_executable("fastboot"), "flash", "system", resource_path("aosp5", "system.img")])
+                                        self.statusText.setText("Flashing boot.img ...")
+                                        subprocess.run([get_executable("fastboot"), "flash", "boot", resource_path("aosp5", "boot.img")])
+                                        self.statusText.setText("Erasing cache and userdata ...")
+                                        subprocess.run([get_executable("fastboot"), "erase", "cache"])
+                                        subprocess.run([get_executable("fastboot"), "erase", "userdata"])
+                                else:
+                                        if os.path.exists(resource_path("aosp5")):
+                                                shutil.rmtree(resource_path("aosp5"))
+                                        self.statusText.setText("Requesting download link...")
+                                        os.makedirs(resource_path("aosp5"), exist_ok=True)
+                                        os.chdir(resource_path("aosp5"))
+                                        response = requests.get(url="https://glassy-f1645-default-rtdb.firebaseio.com/link.json")
+                                        urlToDownload = f"https://drop.xtrafrancyz.net/selif/{response.json()}"
+                                        self.statusText.setText("Downloading AOSP 5.1.1 ... 0%")
+                                        r = requests.get(url=urlToDownload, stream=True)
+                                        total = int(r.headers.get('content-length', 0))
+                                        downloaded = 0
+                                        with open("aosp5.zip", "wb") as file:
+                                                for chunk in r.iter_content(chunk_size=8192):
+                                                        file.write(chunk)
+                                                        downloaded += len(chunk)
+                                                        percent = (downloaded / total) * 100
+                                                        self.statusText.setText(f"Downloading AOSP 5.1.1 ... {round(percent)}%")
+
+                                        self.statusText.setText("Unpacking ...")
+                                        aospZip = ZipFile(file="aosp5.zip")
+                                        aospZip.extractall()
+                                        aospZip.close()
+                                        os.remove("aosp5.zip")
+                                        self.statusText.setText("Flashing system.img ...")
+                                        subprocess.run([get_executable("fastboot"), "flash", "system", resource_path("aosp5", "system.img")])
+                                        self.statusText.setText("Flashing boot.img ...")
+                                        subprocess.run([get_executable("fastboot"), "flash", "boot", resource_path("aosp5", "boot.img")])
+                                        self.statusText.setText("Erasing cache and userdata ...")
+                                        subprocess.run([get_executable("fastboot"), "erase", "cache"])
+                                        subprocess.run([get_executable("fastboot"), "erase", "userdata"])
+                        elif url == "incorrect":
+                                self.statusText.setText("Please choose firmware")
+                                self.progressBar_2.setMaximum(100)
+                                self.installXE24Button.setEnabled(True)
+                                self.installXE24Button.setText("Install")
+                                self.rebootIntoSystemButton.setEnabled(True)
+                                self.listWidget.setEnabled(True)
+                                sys.exit()
+                        else:
+                                if os.path.exists(resource_path(version)):
+                                        shutil.rmtree(resource_path(version))
+                                self.statusText.setText(f"Downloading {version} ... 0%")
+                                os.makedirs(resource_path(version), exist_ok=True)
+                                os.chdir(resource_path(version))
+                                r = requests.get(url=url, stream=True)
+                                total = int(r.headers.get('content-length', 0))
+                                downloaded = 0
+                                with open(f"{version}.zip", "wb") as file:
+                                        for chunk in r.iter_content(chunk_size=8192):
+                                                file.write(chunk)
+                                                downloaded += len(chunk)
+                                                percent = (downloaded / total) * 100
+                                                self.statusText.setText(f"Downloading {version} ... {round(percent)}%")
+                                self.statusText.setText("Unpacking ...")
+                                firmware = ZipFile(file=f"{version}.zip")
+                                firmware.extractall()
+                                firmware.close()
+                                os.remove(f"{version}.zip")
+                                self.statusText.setText("Flashing system.img ...")
+                                subprocess.run([get_executable("fastboot"), "flash", "system", resource_path(version, "system.img")])
+                                self.statusText.setText("Flashing boot.img ...")
+                                subprocess.run([get_executable("fastboot"), "flash", "boot", resource_path(version, "boot.img")])
+                                self.statusText.setText("Erasing cache and userdata ...")
+                                subprocess.run([get_executable("fastboot"), "erase", "cache"])
+                                subprocess.run([get_executable("fastboot"), "erase", "userdata"])
+
+                elif self.radioButton_2.isChecked() == True:
+                        if self.systemInput.text() != "" and self.bootInput.text() != "":
+                                self.statusText.setText("Flashing system.img ...")
+                                subprocess.run([get_executable("fastboot"), "flash", "system", self.systemInput.text()])
+                                self.statusText.setText("Flashing boot.img ...")
+                                subprocess.run([get_executable("fastboot"), "flash", "boot", self.bootInput.text()])
+                                if self.recoveryInput.text() != "":
+                                        self.statusText.setText("Flashing recovery.img ...")
+                                        subprocess.run([get_executable("fastboot"), "flash", "recovery", self.recoveryInput.text()])
+
                         self.statusText.setText("Erasing cache and userdata ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
-                elif url == "aosp5":
-                     if os.path.exists("C:/Glassy/aosp5/system.img") and os.path.exists("C:/Glassy/aosp5/boot.img"):
-                        self.statusText.setText("Flashing system.img ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/aosp5/system.img")
-                        self.statusText.setText("Flashing boot.img ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/aosp5/boot.img")
-                        self.statusText.setText("Erasing cache and userdata ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
-                     else:
-                        if os.path.exists("C:/Glassy/aosp5/"):
-                                shutil.rmtree("C:/Glassy/aosp5")
-                        self.statusText.setText("Requesting download link...")
-                        os.chdir("C:/Glassy/")
-                        os.mkdir("aosp5")
-                        os.chdir("aosp5")
-                        response = requests.get(url="https://glassy-f1645-default-rtdb.firebaseio.com/link.json")
-                        urlToDownload = f"https://drop.xtrafrancyz.net/selif/{response.json()}"
-                        self.statusText.setText("Downloading AOSP 5.1.1 ... 0%")
-                        r = requests.get(url=urlToDownload, stream=True)
-                        total = int(r.headers.get('content-length', 0))
-                        downloaded = 0
-                        with open("aosp5.zip", "wb") as file:
-                                for chunk in r.iter_content(chunk_size=8192):
-                                     file.write(chunk)
-                                     downloaded += len(chunk)
-                                     percent = (downloaded / total) * 100
-                                     self.statusText.setText(f"Downloading AOSP 5.1.1 ... {round(percent)}%")
+                        subprocess.run([get_executable("fastboot"), "erase", "cache"])
+                        subprocess.run([get_executable("fastboot"), "erase", "userdata"])
 
-                        self.statusText.setText("Unpacking ...")
-                        aospZip = ZipFile(file="aosp5.zip")
-                        aospZip.extractall()
-                        aospZip.close()
-                        os.remove("aosp5.zip")
-                        self.statusText.setText("Flashing system.img ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/aosp5/system.img")
-                        self.statusText.setText("Flashing boot.img ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/aosp5/boot.img")
-                        self.statusText.setText("Erasing cache and userdata ...")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                        os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
-                elif url == "incorrect":
-                     self.statusText.setText("Please choose firmware")
-                     self.progressBar_2.setMaximum(100)
-                     self.installXE24Button.setEnabled(True)
-                     self.installXE24Button.setText("Install")
-                     self.rebootIntoSystemButton.setEnabled(True)
-                     self.listWidget.setEnabled(True)
-                     sys.exit()
-                else:
-                     if os.path.exists(f"C:/Glassy/{version}/"):
-                                shutil.rmtree(f"C:/Glassy/{version}")
-                     self.statusText.setText(f"Downloading {version} ... 0%")
-                     os.chdir("C:/Glassy")
-                     os.mkdir(version)
-                     os.chdir(version)
-                     r = requests.get(url=url, stream=True)
-                     total = int(r.headers.get('content-length', 0))
-                     downloaded = 0
-                     with open(f"{version}.zip", "wb") as file:
-                          for chunk in r.iter_content(chunk_size=8192):
-                               file.write(chunk)
-                               downloaded += len(chunk)
-                               percent = (downloaded / total) * 100
-                               self.statusText.setText(f"Downloading {version} ... {round(percent)}%")
-                     self.statusText.setText("Unpacking ...")
-                     firmware = ZipFile(file=f"{version}.zip")
-                     firmware.extractall()
-                     firmware.close()
-                     os.remove(f"{version}.zip")
-                     self.statusText.setText("Flashing system.img ...")
-                     os.system(f"C:/Glassy/platform_tools/fastboot.exe flash system C:/Glassy/{version}/system.img")
-                     self.statusText.setText("Flashing boot.img ...")
-                     os.system(f"C:/Glassy/platform_tools/fastboot.exe flash boot C:/Glassy/{version}/boot.img")
-                     self.statusText.setText("Erasing cache and userdata ...")
-                     os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                     os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
+                self.statusText.setText("Rebooting ...")
+                time.sleep(1)
+                subprocess.run([get_executable("fastboot"), "reboot"])
 
-        elif self.radioButton_2.isChecked() == True:
-             if self.systemInput.text() != "" and self.bootInput.text() != "":
-                self.statusText.setText("Flashing system.img ...")
-                os.system(f'C:/Glassy/platform_tools/fastboot.exe flash system "{self.systemInput.text()}"')
-                self.statusText.setText("Flashing boot.img ...")
-                os.system(f'C:/Glassy/platform_tools/fastboot.exe flash boot "{self.bootInput.text()}"')
-                if self.recoveryInput.text() != "":
-                     self.statusText.setText("Flashing recovery.img ...")
-                     os.system(f'C:/Glassy/platform_tools/fastboot.exe flash recovery "{self.recoveryInput.text()}"')
-                self.statusText.setText("Erasing cache and userdata ...")
-                os.system("C:/Glassy/platform_tools/fastboot.exe erase cache")
-                os.system("C:/Glassy/platform_tools/fastboot.exe erase userdata")
+                self.statusText.setText("")
 
-        self.statusText.setText("Rebooting ...")
-        time.sleep(1)
-        os.system("C:/Glassy/platform_tools/fastboot.exe reboot")
+                self.installXE24Button.setEnabled(True)
+                self.installXE24Button.setText("Install")
+                self.rebootIntoSystemButton.setEnabled(True)
+                self.progressBar_2.setMaximum(100)
 
-        self.statusText.setText("")
+                self.updatingPage.hide()
+                self.deviceFrame.hide()
+                self.searchingFrame.show()
+                self.listWidget.setEnabled(True)
 
-        self.installXE24Button.setEnabled(True)
-        self.installXE24Button.setText("Install")
-        self.rebootIntoSystemButton.setEnabled(True)
-        self.progressBar_2.setMaximum(100)
+                searchThread = threading.Thread(target=self.DeviceSearching)
+                searchThread.start()
 
-        self.updatingPage.hide()
-        self.deviceFrame.hide()
-        self.searchingFrame.show()
-        self.listWidget.setEnabled(True)
+                self.connectGlassToContinue.setText("Connect your glasses to continue")
 
-        searchThread = threading.Thread(target=self.DeviceSearching)
-        searchThread.start()
-
-        self.connectGlassToContinue.setText("Connect your glasses to continue")
-
-        sys.exit()
+                sys.exit()
         
 
 
@@ -808,41 +816,22 @@ class Ui_MainWindow(object):
 
 
     def InstallADBDrivers(self):
+        # This application is now Linux-only. Provide distro-friendly instructions
+        # rather than attempting to run Windows installers.
         msg = QMessageBox()
-
-        msg.setWindowTitle("Driver")
-        msg.setText("Which driver do you want to install?")
-
-        adb_btn = msg.addButton("ADB", QMessageBox.YesRole)
-        fastboot_btn = msg.addButton("FastBoot", QMessageBox.YesRole)
+        msg.setWindowTitle("ADB / Fastboot (Linux)")
+        msg.setText(
+            "This application targets Linux.\n\n"
+            "To use ADB/Fastboot install Android platform-tools:\n"
+            "  - Debian/Ubuntu: sudo apt install android-tools-adb android-tools-fastboot\n"
+            "  - Arch: sudo pacman -S android-tools\n"
+            "Or download platform-tools from:\n"
+            "  https://developer.android.com/studio/releases/platform-tools\n\n"
+            "If platform-tools is not on your PATH, set the environment variable:\n"
+            "  export PLATFORM_TOOLS=~/Android/Sdk/platform-tools\n\n"
+            "After installing, verify with: just adb-devices"
+        )
         msg.exec_()
-
-        if msg.clickedButton() == adb_btn:
-            self.run_command_as_admin(command='start C:/Glassy/drivers/adb/Latest-ADB-Installer.bat')
-        else:
-                msg2 = QMessageBox()
-
-                msg2.setWindowTitle("TestSigning")
-                msg2.setText("Do you have TestSigning enabled?")
-
-                yes_btn = msg2.addButton("Yes", QMessageBox.YesRole)
-                no_btn = msg2.addButton("No", QMessageBox.YesRole)
-                idk_btn = msg2.addButton("I dont know", QMessageBox.YesRole)
-
-                msg2.exec_()
-
-                if msg2.clickedButton() == yes_btn:
-                        installThread = threading.Thread(target=self.install_fastboot_driver)
-                        installThread.start()
-                else:
-                        msg3 = QMessageBox()
-
-                        msg3.setWindowTitle("TestSigning")
-                        msg3.setText("Okay, now we will enable TestSigning to install the driver and restart your computer. After enabling it, open the program, click 'Install fastboot driver' again and select Yes.")
-
-                        msg3.exec_()
-
-                        self.run_command_as_admin(command="start C:/Glassy/drivers/fastboot/testsigning.bat")
 
     def OpenDeleteMenu(self):
         self.delete_window = QtWidgets.QMainWindow()
@@ -869,41 +858,37 @@ class Ui_MainWindow(object):
         self.change_time_window.show()
 
     def install_fastboot_driver_init(self):
-        msg = QMessageBox()
-
-        msg.setWindowTitle("TestSigning")
-        msg.setText("Do you have TestSigning enabled?")
-
-        yes_btn = msg.addButton("Yes", QMessageBox.YesRole)
-        no_btn = msg.addButton("No", QMessageBox.YesRole)
-        idk_btn = msg.addButton("I dont know", QMessageBox.YesRole)
-
-        msg.exec_()
-
-        if msg.clickedButton() == yes_btn:
+                # On Linux there is no TestSigning flow. Provide instructions and open
+                # the installer helper which will simply show package instructions.
+                msg = QMessageBox()
+                msg.setWindowTitle("Fastboot (Linux)")
+                msg.setText(
+                        "Fastboot installation on Linux is handled by your package manager.\n\n"
+                        "Example (Debian/Ubuntu): sudo apt install android-tools-fastboot\n\n"
+                        "Press OK to view more instructions."
+                )
+                msg.exec_()
                 installThread = threading.Thread(target=self.install_fastboot_driver)
                 installThread.start()
-        else:
-                msg2 = QMessageBox()
-
-                msg2.setWindowTitle("TestSigning")
-                msg2.setText("Okay, now we will enable TestSigning to install the driver and restart your computer. After enabling it, open the program, click 'Install fastboot driver' again and select Yes.")
-
-                msg2.exec_()
-
-                self.run_command_as_admin(command="start C:/Glassy/drivers/fastboot/testsigning.bat")
 
     
 
     def install_fastboot_driver(self):
-        self.progressBar.setValue(100)
-        self.run_command_as_admin(command="start C:/Glassy/drivers/fastboot/install.bat")
+                self.progressBar.setValue(100)
+                msg = QMessageBox()
+                msg.setWindowTitle("Fastboot (Linux)")
+                msg.setText(
+                        "Fastboot support on Linux is provided by the system package.\n\n"
+                        "Example (Debian/Ubuntu): sudo apt install android-tools-fastboot\n\n"
+                        "Or use the 'just adb-setup' target for instructions."
+                )
+                msg.exec_()
 
     def reboot_device_button(self):
         self.rebootButton.setText("Rebooting ...")
-        os.system("C:/Glassy/platform_tools/adb.exe reboot")
+        subprocess.run([get_executable("adb"), "reboot"])
         self.rebootButton.setText("Reboot")
-        
+
         self.deviceFrame.hide()
         self.updatingPage.hide()
         self.searchingFrame.show()
@@ -915,9 +900,9 @@ class Ui_MainWindow(object):
 
     def exit_fastboot(self):
         self.rebootIntoSystemButton.setText("Rebooting ...")
-        os.system("C:/Glassy/platform_tools/fastboot.exe reboot")
+        subprocess.run([get_executable("fastboot"), "reboot"])
         self.rebootIntoSystemButton.setText("Reboot")
-        
+
         self.deviceFrame.hide()
         self.updatingPage.hide()
         self.searchingFrame.show()
@@ -930,19 +915,20 @@ class Ui_MainWindow(object):
 
 
     def run_command_as_admin(self, command: str):
-        ps_command = f'Start-Process cmd -Verb RunAs -ArgumentList "/c {command}"'
-        
-        result = subprocess.run(
-                ['powershell', '-Command', ps_command],
-                capture_output=True,
-                text=True
-        )
+        # Linux-only privilege escalation: prefer pkexec, fall back to sudo, then shell
+        try:
+            subprocess.run(['pkexec', 'sh', '-c', command])
+        except FileNotFoundError:
+            try:
+                subprocess.run(['sudo', 'sh', '-c', command])
+            except Exception:
+                subprocess.run(command, shell=True)
 
     def reboot_fastboot_button(self):
         self.fastbootButton.setText("Rebooting ...")
-        os.system("C:/Glassy/platform_tools/adb.exe reboot-bootloader")
+        subprocess.run([get_executable("adb"), "reboot-bootloader"])
         self.fastbootButton.setText("Enter fastboot")
-        
+
         self.deviceFrame.hide()
         self.searchingFrame.show()
 
@@ -970,7 +956,7 @@ class Ui_MainWindow(object):
 
         self.progressBar.setMaximum(0)
 
-        os.system(f'C:/Glassy/platform_tools/adb.exe install "{file}"')
+        subprocess.run([get_executable("adb"), "install", file])
 
         self.apkInstallButton.setText(" Install .APK file")
 
@@ -983,7 +969,7 @@ class Ui_MainWindow(object):
     def install_launchy(self):
         self.progressBar.setMaximum(0)
         self.installLaunchy.setText("Installing...")
-        os.system(f'C:/Glassy/platform_tools/adb.exe install "C:/Glassy/android_apps/launchy.apk"')
+        subprocess.run([get_executable("adb"), "install", resource_path("android_apps", "launchy.apk")])
         self.progressBar.setMaximum(100)
         self.installLaunchy.setText("Installed")
 
@@ -993,7 +979,7 @@ class Ui_MainWindow(object):
         applications = 0
 
         command = subprocess.run(
-                ["C:/Glassy/platform_tools/adb.exe", "shell", "dumpsys", "battery"],
+                [get_executable("adb"), "shell", "dumpsys", "battery"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True
@@ -1004,7 +990,7 @@ class Ui_MainWindow(object):
                 battery = int(line.replace("level: ", ""))
         
         command = subprocess.run(
-                ["C:/Glassy/platform_tools/adb.exe", "shell", "getprop", "ro.build.version.glass"],
+                [get_executable("adb"), "shell", "getprop", "ro.build.version.glass"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True
@@ -1013,7 +999,7 @@ class Ui_MainWindow(object):
         firmware = command.stdout.strip()
 
         command = subprocess.run(
-                ["C:/Glassy/platform_tools/adb.exe", "shell", "pm", "list", "packages"],
+                [get_executable("adb"), "shell", "pm", "list", "packages"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True
@@ -1040,44 +1026,40 @@ class Ui_MainWindow(object):
 
 
     def DeviceSearching(self):
-        while True:
-            command = subprocess.run(
-                ["C:/Glassy/platform_tools/adb.exe", "devices"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True
-            )
+                while True:
+                        # Check ADB first
+                        command = subprocess.run(
+                                [get_executable("adb"), "devices"],
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE,
+                                text=True,
+                        )
 
-            linecount = 0
+                        lines = [l for l in command.stdout.splitlines() if l.strip()]
+                        if len(lines) >= 2:
+                                # Device(s) present via ADB
+                                self.connectGlassToContinue.setText("Connecting to device...")
+                                self.batteryText.setText("Battery: Loading...")
+                                self.applicationsText.setText("Applications: Loading...")
+                                self.batteryText_2.setText("Firmware: Loading...")
+                                time.sleep(0.5)
+                                self.update_device_info()
+                                sys.exit()
 
-            for line in command.stdout.splitlines():
-                linecount += 1
+                        # Check fastboot
+                        command = subprocess.run(
+                                [get_executable("fastboot"), "devices"],
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE,
+                                text=True,
+                        )
 
-            if linecount == 3:
-                self.connectGlassToContinue.setText("Connecting to device...")
-                self.batteryText.setText("Battery: Loading...")
-                self.applicationsText.setText("Applications: Loading...")
-                self.batteryText_2.setText("Firmware: Loading...")
-                time.sleep(0.5)
-                self.update_device_info()
-                sys.exit()
-            else:
-                command = subprocess.run(
-                        ["C:/Glassy/platform_tools/fastboot.exe", "devices"],
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.PIPE,
-                        text=True
-                )
-
-                if "fastboot" in command.stdout.strip():
-                    self.connectGlassToContinue.setText("Connecting to device...")
-                    time.sleep(1)
-                    self.searchingFrame.hide()
-                    self.updatingPage.show()
-                    sys.exit()
-
-
-
+                        if "fastboot" in command.stdout.strip():
+                                self.connectGlassToContinue.setText("Connecting to device...")
+                                time.sleep(1)
+                                self.searchingFrame.hide()
+                                self.updatingPage.show()
+                                break
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Glassy"))

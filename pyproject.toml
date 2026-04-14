@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glassy"
+version = "1.2.0"
+description = "Glassy — refactored for cross-platform (Linux)"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [ { name = "alfredgamulo" } ]
+dependencies = [
+    "PyQt5",
+    "requests",
+    "art"
+]

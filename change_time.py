@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 import os
 import subprocess
+from utils import get_executable, resource_path
 
 base_dir = os.path.dirname(__file__)
 
@@ -26,7 +27,7 @@ class ChangeTime(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20, 10, 81, 81))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(os.path.join(base_dir, "./img/clock.png")))
+        self.label.setPixmap(QtGui.QPixmap(resource_path("img", "clock.png")))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -53,9 +54,9 @@ class ChangeTime(object):
     def ChangeTime(self):
         time = self.lineEdit.text()
         if time != "":
-            os.system(f'C:/Glassy/platform_tools/adb.exe shell settings put global auto_time 0')
-            os.system(f'C:/Glassy/platform_tools/adb.exe shell "toolbox date -s {time}"')
-            os.system(f'C:/Glassy/platform_tools/adb.exe reboot')
+            subprocess.run([get_executable("adb"), "shell", "settings", "put", "global", "auto_time", "0"])
+            subprocess.run([get_executable("adb"), "shell", "toolbox", "date", "-s", time])
+            subprocess.run([get_executable("adb"), "reboot"])
 
             msg = QMessageBox()
 

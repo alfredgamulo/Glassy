@@ -15,13 +15,14 @@ from PyQt5.QtGui import QFontDatabase
 import os
 import shutil
 import re
+from utils import resource_path
 
 base_dir = os.path.dirname(__file__)
 
 
 class Firmwares(object):
     def setupUi(self, MainWindow):
-        font_path = os.path.join(base_dir, "./fonts/Roboto_Condensed-Medium.ttf")
+        font_path = resource_path("fonts", "Roboto_Condensed-Medium.ttf")
         font_id = QFontDatabase.addApplicationFont(font_path)
         font_families = QFontDatabase.applicationFontFamilies(font_id)
         MainWindow.setObjectName("MainWindow")
@@ -53,9 +54,9 @@ class Firmwares(object):
         self.listWidget.setObjectName("listWidget")
         MainWindow.setCentralWidget(self.centralwidget)
 
-        for file in os.listdir("C:/Glassy"):
+        for file in os.listdir(base_dir):
             if re.match(r"xe\d+", file):
-                self.listWidget.addItem(f"Google XE {file.replace("xe", "")}")
+                self.listWidget.addItem(f"Google XE {file.replace('xe', '')}")
             elif "aosp5" in file:
                 self.listWidget.addItem("AOSP 5.1.1")
 
@@ -67,37 +68,26 @@ class Firmwares(object):
     def DeleteFirmware(self):
         try:
             if "AOSP" in self.listWidget.currentItem().text():
-                shutil.rmtree("C:/Glassy/aosp5/")
+                shutil.rmtree(resource_path("aosp5"))
                 msg = QMessageBox()
-
-                msg.setWIndowTitle("AOSP 5.1.1")
+                msg.setWindowTitle("AOSP 5.1.1")
                 msg.setText("AOSP 5.1.1 firmware has been successfully removed")
-
-
                 msg.exec_()
-
                 self.listWidget.takeItem(self.listWidget.currentRow())
             else:
                 firmware_name = self.listWidget.currentItem().text()
                 file_name = "xe" + self.listWidget.currentItem().text().replace("Google XE ", "")
-                shutil.rmtree(f"C:/Glassy/{file_name}")
+                shutil.rmtree(resource_path(file_name))
                 msg = QMessageBox()
-
                 msg.setWindowTitle(firmware_name)
                 msg.setText(f"{firmware_name} has been successfully removed")
-
                 msg.exec_()
-
                 self.listWidget.takeItem(self.listWidget.currentRow())
         except Exception as e:
-
             print(e)
-
             msg = QMessageBox()
-
             msg.setWindowTitle("Error")
             msg.setText(f"Check console for details")
-
             msg.exec_()
 
     def retranslateUi(self, MainWindow):

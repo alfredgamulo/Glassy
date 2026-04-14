@@ -14,6 +14,7 @@ from PyQt5.QtGui import QFontDatabase
 import os
 import shutil
 import subprocess
+from utils import get_executable, resource_path
 
 
 base_dir = os.path.dirname(__file__)
@@ -21,7 +22,7 @@ base_dir = os.path.dirname(__file__)
 
 class Remove(object):
     def setupUi(self, MainWindow):
-        font_path = os.path.join(base_dir, "./fonts/Roboto_Condensed-Medium.ttf")
+        font_path = resource_path("fonts", "Roboto_Condensed-Medium.ttf")
         font_id = QFontDatabase.addApplicationFont(font_path)
         font_families = QFontDatabase.applicationFontFamilies(font_id)
         MainWindow.setObjectName("MainWindow")
@@ -54,7 +55,7 @@ class Remove(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         command = subprocess.run(
-            ["C:/Glassy/platform_tools/adb.exe", "shell", "pm", "list", "packages"],
+            [get_executable("adb"), "shell", "pm", "list", "packages"],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True
@@ -73,23 +74,16 @@ class Remove(object):
         self.pushButton.setText("Uninstalling...")
         app_id = self.listWidget.currentItem().text()
         if "package:" in app_id:
-            os.system(f"C:/Glassy/platform_tools/adb.exe uninstall {app_id.replace("package:", "")}")
-            self.pushButton.setText("Uninstall")
-            msg = QMessageBox()
-
-            msg.setWindowTitle("Done")
-            msg.setText(f"{app_id} was successfully uninstalled!")
-
-            msg.exec_()
+            pkg = app_id.replace("package:", "")
         else:
-            os.system(f"C:/Glassy/platform_tools/adb.exe uninstall {app_id}")
-            self.pushButton.setText("Uninstall")
-            msg = QMessageBox()
+            pkg = app_id
 
-            msg.setWindowTitle("Done")
-            msg.setText(f"{app_id} was successfully uninstalled!")
-
-            msg.exec_()
+        subprocess.run([get_executable("adb"), "uninstall", pkg])
+        self.pushButton.setText("Uninstall")
+        msg = QMessageBox()
+        msg.setWindowTitle("Done")
+        msg.setText(f"{app_id} was successfully uninstalled!")
+        msg.exec_()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

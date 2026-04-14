@@ -12,12 +12,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QFontDatabase
 import os
 import subprocess
+from utils import get_executable, resource_path
 
 base_dir = os.path.dirname(__file__)
 
 class Programs(object):
     def setupUi(self, MainWindow):
-        font_path = os.path.join(base_dir, "./fonts/Roboto_Condensed-Medium.ttf")
+        font_path = resource_path("fonts", "Roboto_Condensed-Medium.ttf")
         font_id = QFontDatabase.addApplicationFont(font_path)
         font_families = QFontDatabase.applicationFontFamilies(font_id)
         MainWindow.setObjectName("MainWindow")
@@ -47,7 +48,7 @@ class Programs(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         command = subprocess.run(
-            ["C:/Glassy/platform_tools/adb.exe", "shell", "pm", "list", "packages"],
+            [get_executable("adb"), "shell", "pm", "list", "packages"],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True
